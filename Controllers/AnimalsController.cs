@@ -26,4 +26,15 @@ public class AnimalsController : Controller
         }
         return Ok(matchingAnimal);
     }
+
+        [HttpGet("/{page}&size={PageSize}")]
+        public IActionResult GetByPageAndSize([FromRoute] int page = 0, int PageSize=10)
+        {
+            // PageSize = 2;
+            //var defaultPageSize = PageSize==null?3:PageSize;
+            var animalsList = _zoo.Animals.Include(animal => animal.Species).ToList();
+            var count = animalsList.Count();
+            var animalsData = animalsList.Skip(page * PageSize).Take(PageSize).ToList();
+            return Ok(animalsData);
+        }
 }
