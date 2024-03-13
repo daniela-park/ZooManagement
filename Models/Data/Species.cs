@@ -1,7 +1,7 @@
 using Microsoft.OpenApi.Writers;
 using ZooManagement.Enums;
 
-namespace ZooManagement.Models;
+namespace ZooManagement.Models.Data;
 
 public class Species
 {
